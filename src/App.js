@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import Navbar from "./navbar";
+import { useState } from "react";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const filtered = products.filter(p =>
+    p.title.toLowerCase().includes(search.toLowerCase())
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar onSearch={setSearchTerm} />
+      {/* Pass searchTerm down to your Products page */}
     </div>
   );
 }
