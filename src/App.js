@@ -1,9 +1,9 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Navbar from "./navbar";
 import { useState } from "react";
 import products from "./data/products.json";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+//import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import search from './components/search';
 
 function App() {
@@ -14,7 +14,21 @@ function App() {
   return (
     <div>
       <Navbar onSearch={setSearchTerm} />
-      {/* Pass searchTerm down to your Products page */}
+      {searchTerm && (
+        <div className="search-results">
+          <h3>Search Results:</h3>
+          {filtered.length > 0 ? (
+            <ul>
+              {filtered.map(p => (
+                <li key={p.id}>{p.title}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No products found.</p>
+          )}
+        </div>
+      )}
+      {/* Other components and routes would go here */}
     </div>
   );
 }
